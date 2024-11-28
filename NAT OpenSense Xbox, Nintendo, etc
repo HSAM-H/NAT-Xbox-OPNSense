@@ -1,0 +1,43 @@
+Create Alias for Xbox Port for both TCP/UDP:
+Firewall -> Aliases
+Click + at the bottom right
+Name: Xbox Live Port
+Type: Port(s)
+Content: 3074 (or the alternative port if on second Xbox One)
+Description: Whatever you like
+Create Alias for Xbox IP addresses
+Firewall -> Aliases
+Click + at the bottom right
+Name: Xbox One Host
+Type: Host(s)
+Content: IP address of Xbox One
+Description: Whatever you like
+Setup Port Forwarding Rules
+Firewall -> NAT -> Port Forward
+Click +Add at the top right
+Interface: WAN
+TCP/IP Version: IPv4
+Protocol: TCP/UDP
+Destination: WAN Address
+Destination port range: Xbox Live Port Alias
+Redirect Target IP: Xbox One Host Alias
+Redirect target port: Xbox Live Port Alias
+Description: Be creative
+NAT Reflection: Enable (Super Important!)
+Setup Firewall Rules
+These should be auto-created when port forwarding rules were created. This was the easy part.
+
+Setup Outbound NAT Rule
+Firewall -> NAT -> Outbound
+Switch the Mode at the top from Automatic to Hybrid
+Click Save
+Click +Add
+Interface: WAN
+TCP/IP Version: IPv4
+Protocol: TCP/UDP
+Source address: Xbox One Host Alias
+Source port: Xbox Live Port Alias
+Destination address: any
+Destination port: any
+Static Port: Checked (Super Important!)
+Description: A one line poem
